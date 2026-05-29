@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ClearDrop</title>
+<meta name="description" content="ClearDrop busca conectar y dar voz a las comunidades afectadas por problemas del agua"/>
+<meta content="img/Logosinfondo.png" property="og:image"/>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+<!-- Leaflet CSS & JS para el mapa dinamico--> <!--No está terminada esta parte, falta agregar el mapa a la página web como tal-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+<link rel="stylesheet" href="stylep.css" />
+<script src="scriptp.js" defer></script>
+</head>
+<body>
+
+<!-- =========================================================
+
+NAVBAR
+
+========================================================= -->
+<nav class="navbar">
+<div class="container">
+
+<!-- Logo -->
+<img src="img/Logosinfondo.png" class="nav-logo" alt="ClearDropLogo">
+<img src="img/Captura_de_pantalla_2026-05-28_153221-removebg-preview.png" class="nav-logo-nombre" alt="ClearDrop">
+
+<!-- Droplet SVG Logo -->
+ <!--
+<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 3C18 3 6 14.5 6 22C6 28.627 11.373 34 18 34C24.627 34 30 28.627 30 22C30 14.5 18 3Z" fill="url(#dropGrad)" />
+<path d="M14 24C14 24 16 20 20 20C22 20 23.5 21 24 22" stroke="white" stroke-width="1.8" stroke-linecap="round" />
+<circle cx="20" cy="17" r="2.5" fill="white" opacity=".7" />
+<defs>
+<linearGradient id="dropGrad" x1="6" y1="3" x2="30" y2="34" gradientUnits="userSpaceOnUse">
+<stop stop-color="#38B6E8"/>
+<stop offset="1" stop-color="#0B7DBD"/>
+</linearGradient>
+</defs>
+</svg>
+<span class="nav-logo-text">Clear<span>Drop</span></span>
+</a> -->
+
+<!-- links para las otras secciones. Aún no están configuradas -->
+<ul class="nav-links">
+<li><a href="prueba1.html" class="active">Inicio</a></li>
+<li><a href="#mapa">Mapas</a></li>
+<li><a href="#reportes">Reportes</a></li>
+<li><a href="#educacion">Educación</a></li>
+<li><a href="#comunidad">Comunidad</a></li>
+<li><a href="#noticias">Noticias</a></li>
+<li><a href="#nosotros" class="nav-cta">Sobre nosotros</a></li>
+</ul>
+
+<!-- Menú de hamburguesa para dispositivos móviles -->
+<button class="nav-hamburger" id="menuBtn" aria-label="Abrir menú">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- Interfaz del nav en móviles -->
+<div class="mobile-nav" id="mobileNav">
+<button class="mobile-nav-close" id="menuClose">✕</button>
+<a href="prueba1.html">Inicio</a>
+<a href="#mapa">Mapas</a>
+<a href="#reportes">Reportes</a>
+<a href="#educacion">Educación</a>
+<a href="#comunidad">Comunidad</a>
+<a href="#noticias">Noticias</a>
+<a href="#nosotros">Sobre nosotros</a>
+</div>
+
+<!-- =========================================================
+
+HERO
+
+========================================================= -->
+<section class="hero" id="inicio">
+<!--Video hero-->
+<video autoplay muted loop playinline class="hero-video"> <!--Esto permite que el video se reproduzca en bucle, al igual que en silencio. El playinline es para que se reproduzca en el lugar donde se define-->
+    <source src="video/herovideoCD.mp4" type="video/mp4">
+</video>
+
+<div class="hero-blob hero-blob-1"></div>
+<div class="hero-blob hero-blob-2"></div>
+
+<div class="container">
+
+<div class="hero-content">
+<div class="hero-badge">
+<span class="hero-badge-dot"></span>
+Plataforma activa en Panamá
+</div>
+
+<h1 class="hero-title">
+Educación <span>azul</span><br/>para un futuro <span>verde</span>
+</h1>
+
+<p class="hero-sub">
+Conecta a personas con soluciones de agua. Reporta fugas, explora el mapa interactivo y únete a la comunidad ambiental de Panamá.
+</p>
+
+<div class="hero-actions">
+<a href="#reportes" class="btn btn-primary">
+
+<!-- wrench icon -->
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+Reportar problema
+</a>
+
+<a href="#mapa" class="btn btn-outline">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Explorar mapa
+</a>
+</div>
+</div>
+
+<!-- Visual --> <!--
+<div class="hero-visual">
+<div class="drop-container">-->
+
+<!-- Big animated water drop SVG --><!--
+<svg class="drop-svg" viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="dg1" cx="40%" cy="30%" r="65%">
+<stop offset="0%" stop-color="#72EAD0"/>
+<stop offset="50%" stop-color="#38B6E8"/>
+<stop offset="100%" stop-color="#0B5C9E"/>
+</radialGradient>
+
+<radialGradient id="dg2" cx="35%" cy="25%" r="45%">
+<stop offset="0%" stop-color="rgba(255,255,255,.55)"/>
+<stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+</radialGradient>
+
+<filter id="soft-shadow">
+<feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="rgba(0,40,80,.4)"/>
+</filter>
+
+</defs>-->
+
+<!-- Main drop body --><!--
+<path d="M130 20 C130 20 30 110 30 180 C30 235 75 275 130 275 C185 275 230 235 230 180 C230 110 130 20 130 20 Z"
+fill="url(#dg1)" filter="url(#soft-shadow)"/>-->
+
+<!-- Specular highlight --><!--
+<path d="M130 20 C130 20 30 110 30 180 C30 235 75 275 130 275 C185 275 230 235 230 180 C230 110 130 20 130 20 Z"
+fill="url(#dg2)"/>-->
+
+<!-- Inner shine --><!--
+<ellipse cx="100" cy="110" rx="18" ry="32" fill="rgba(255,255,255,.28)" transform="rotate(-20,100,110)"/>
+-->
+
+<!-- Leaf icon inside drop --><!--
+<g transform="translate(75, 145) scale(1.1)">-->
+
+<!-- leaf shape --><!--
+<path d="M50 10 C80 10 90 40 60 60 C50 66 30 60 20 45 C10 30 20 10 50 10 Z" fill="#4CAF78" opacity=".9"/>
+<path d="M50 10 C50 10 50 40 35 60" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+<path d="M50 10 C50 10 65 35 55 58" stroke="rgba(255,255,255,.5)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+</g>
+</svg>-->
+
+<!-- Ripple rings --><!--
+<div class="ripple-ring"></div>
+<div class="ripple-ring"></div>
+<div class="ripple-ring"></div>
+</div>-->
+
+<!-- Stat chips --><!---
+<div class="stat-chip stat-chip-1">
+<div class="chip-icon" style="background:#E8F6FD">💧</div>
+<div>
+<div style="font-size:.7rem;color:var(--gray-mid);font-weight:400">Fugas reportadas</div>
+<div>1,240+</div>
+</div>
+</div>
+
+<div class="stat-chip stat-chip-2">
+<div class="chip-icon" style="background:#E8F9EE">🌿</div>
+<div>
+<div style="font-size:.7rem;color:var(--gray-mid);font-weight:400">Voluntarios activos</div>
+<div>3,800+</div>
+</div>
+</div>
+</div>
+</div>-->
+
+<!-- Wave --><!--
+<div class="hero-wave">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
+<path d="M0,40 C200,10 400,70 600,45 C800,20 1000,65 1200,40 L1200,80 L0,80 Z" fill="white"/>
+</svg>
+</div> -->
+</section>
+
+<!-- =========================================================
+
+QUICK ACTIONS
+
+========================================================= -->
+<section class="quick-actions" id="reportes">
+<div class="container">
+<div class="quick-actions-header reveal">
+<p class="section-label">Acciones rápidas</p>
+<h2 class="section-title">¿Qué deseas hacer hoy?</h2>
+</div>
+
+<div class="actions-grid">
+
+<!-- Card 1 -->
+<div class="action-card reveal">
+<div class="action-icon-wrap ac-blue">🔧</div>
+<h3 class="action-title">Reportar fuga</h3>
+<p class="action-desc">Informa sobre una fuga de agua en tu comunidad para una solución rápida.</p>
+</div>
+
+<!-- Card 2 -->
+<div class="action-card reveal" style="transition-delay:.08s">
+<div class="action-icon-wrap ac-teal">🗺️</div>
+<h3 class="action-title">Ver mapa interactivo</h3>
+<p class="action-desc">Explora el mapa de Panamá con reportes en tiempo real y puntos de atención.</p>
+</div>
+
+<!-- Card 3 -->
+<div class="action-card reveal" style="transition-delay:.16s" id="educacion">
+<div class="action-icon-wrap ac-green">📚</div>
+<h3 class="action-title">Aprender sobre el agua</h3>
+<p class="action-desc">Accede a recursos educativos sobre el cuidado del agua y medio ambiente.</p>
+</div>
+
+<!-- Card 4 -->
+<div class="action-card reveal" style="transition-delay:.24s" id="comunidad">
+<div class="action-icon-wrap ac-amber">🤝</div>
+<h3 class="action-title">Unirse como voluntario</h3>
+<p class="action-desc">Únete a nuestra red de voluntarios y contribuye al uso responsable del agua.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- =========================================================
+
+STATS STRIP
+
+========================================================= -->
+<p class="section-label">En la provincia de Chiriquí</p>
+<h2 class="section-title">Datos recolectados</h2>
+<div class="stats-strip">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item reveal">
+<div class="stat-value" data-target="121">0<span>+</span></div>
+<div class="stat-label">Personas encuestadas</div>
+</div>
+
+<div class="stat-item reveal" style="transition-delay:.1s">
+<div class="stat-value" data-target="61">0<span>%</span></div>
+<div class="stat-label">Tienen afectaciones con el servicio del agua</div>
+</div>
+
+<div class="stat-item reveal" style="transition-delay:.2s">
+<div class="stat-value" data-target="25">0<span>+</span></div>
+<div class="stat-label">Corregimientos abarcados</div>
+</div>
+
+<div class="stat-item reveal" style="transition-delay:.3s">
+<div class="stat-value" data-target="62">0<span>%</span></div>
+<div class="stat-label">Exige una solución</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- =========================================================
+
+Mapa referencia: Lo siguiente es solo una idea visual del mapa que vincularemos con un API, es por es que por el momento colocamos esto.
+
+========================================================= -->
+<section class="map-section" id="mapa">
+<div class="container">
+
+<!-- Info -->
+<div class="map-info reveal">
+<p class="section-label">Mapa interactivo</p>
+<h2 class="section-title">Reportes en tiempo real en Panamá</h2>
+<p>Visualiza el estado del agua en todo el país. Los marcadores muestran fugas activas, zonas en reparación y puntos de distribución de agua potable.</p>
+<a href="#" class="btn-map">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Ver mapa completo
+</a>
+</div>
+
+<!-- Widget -->
+<div class="map-widget reveal" style="transition-delay:.15s">
+<div class="map-widget-header">
+<div class="map-selector">
+<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Panamá
+<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+</div>
+
+<div class="traffic-lights">
+<span class="tl-red"></span>
+<span class="tl-amber"></span>
+<span class="tl-green"></span>
+</div>
+</div>
+
+<div class="map-canvas" id="mapCanvas">
+
+<!-- Panama SVG map (simplified outline) -->
+<svg class="panama-map" viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#C8E6A0"/>
+<stop offset="100%" stop-color="#9DCC72"/>
+</linearGradient>
+</defs>
+
+<!-- Simplified Panama land mass -->
+<path d="
+M 50,120 C 60,100 80,90 100,85 C 120,80 130,88 150,82
+C 175,75 190,60 215,55 C 235,51 245,58 265,54
+C 285,50 295,40 320,38 C 345,36 355,44 375,42
+C 400,40 415,30 440,28 C 465,26 475,35 500,33
+C 525,31 540,22 560,25 C 580,28 590,40 610,45
+C 630,50 645,45 660,55
+L 665,80 C 645,75 625,80 605,85
+C 580,90 565,82 545,88
+C 520,95 505,108 480,112
+C 460,115 445,108 425,112
+C 400,117 385,130 360,135
+C 340,139 325,132 305,138
+C 280,145 265,160 245,162
+C 225,164 210,155 190,158
+C 165,162 150,175 130,172
+C 110,169 100,155 80,150
+C 65,146 52,138 50,120 Z
+" fill="url(#landGrad)" stroke="#7AAD55" stroke-width="1.5"/>
+
+<!-- Canal zone highlight -->
+<path d="M 330,60 C 335,85 338,108 342,130" stroke="rgba(56,182,232,.7)" stroke-width="3" stroke-dasharray="5,3" fill="none"/>
+</svg>
+
+<!-- Markers -->
+<div class="map-marker red m1" data-tip="Fuga activa – Panamá Ciudad"></div>
+<div class="map-marker green m2" data-tip="Resuelto – Colón"></div>
+<div class="map-marker yellow m3" data-tip="En proceso – Chitré"></div>
+<div class="map-marker blue m4" data-tip="Distribución – Las Tablas"></div>
+<div class="map-marker green m5" data-tip="Resuelto – David"></div>
+<div class="map-marker red m6" data-tip="Fuga activa – Penonomé"></div>
+
+<!-- Tooltip -->
+<div class="map-tooltip" id="mapTooltip"></div>
+
+<!-- Zoom controls -->
+<div class="map-zoom">
+<button aria-label="Acercar">+</button>
+<button aria-label="Alejar">−</button>
+</div>
+</div>
+
+<div class="map-legend">
+<div class="legend-item"><div class="legend-dot" style="background:#EF5350"></div>Fuga activa</div>
+<div class="legend-item"><div class="legend-dot" style="background:#FFC107"></div>En proceso</div>
+<div class="legend-item"><div class="legend-dot" style="background:#4CAF78"></div>Resuelto</div>
+<div class="legend-item"><div class="legend-dot" style="background:#29B6F6"></div>Distribución</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- =========================================================
+
+NEWS / ALERTS
+
+========================================================= -->
+<section class="news-section" id="noticias">
+<div class="container">
+<div class="news-header reveal">
+
+<div>
+<p class="section-label">Alertas &amp; Noticias</p>
+<h2 class="section-title">Últimas actualizaciones</h2>
+</div>
+
+<a href="#" class="btn-secondary">
+Ver todas
+<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+
+<!-- Ticker -->
+<div class="ticker-banner reveal" style="transition-delay:.1s">
+<span class="ticker-label">En vivo</span>
+<div class="ticker-track">
+<div class="ticker-inner">
+<span>Corte de agua programado en David – 12:45 AM</span>
+<span>Fuga reparada en Av. Balboa, Panamá Ciudad</span>
+<span>Campaña de ahorro de agua activa en Chiriquí</span>
+<span>Nuevo punto de distribución en Colón</span>
+<span>Taller de educación ambiental – Registro abierto</span>
+</div>
+</div>
+</div>
+
+<!-- Alert cards -->
+<div class="alerts-grid">
+
+<!-- Card 1 -->
+<div class="alert-card ac-danger reveal">
+<span class="alert-icon">🔴</span>
+<div class="alert-body">
+<h4 class="alert-title">Corte de agua programado en David</h4>
+<p class="alert-desc">Interrupción del servicio entre las 10 PM y las 4 AM por mantenimiento de tubería principal.</p>
+<div class="alert-meta">
+<span class="alert-time"> 12:45 AM – Hoy</span>
+<span class="alert-tag tag-red">Urgente</span>
+</div>
+</div>
+</div>
+
+<!-- Card 2 -->
+<div class="alert-card ac-warning reveal" style="transition-delay:.1s">
+<span class="alert-icon">🟡</span>
+<div class="alert-body">
+<h4 class="alert-title">Fuga detectada en Penonomé</h4>
+<p class="alert-desc">Equipo técnico ya fue despachado. Se estima reparación en 3 horas.</p>
+<div class="alert-meta">
+<span class="alert-time"> 2:10 AM – Hoy</span>
+<span class="alert-tag tag-yellow">En proceso</span>
+</div>
+</div>
+</div>
+
+<!-- Card 3 -->
+<div class="alert-card ac-info reveal" style="transition-delay:.2s">
+<span class="alert-icon">📢</span>
+<div class="alert-body">
+<h4 class="alert-title">Taller de Educación Ambiental</h4>
+<p class="alert-desc">Únete al taller virtual "Agua para Todos" el próximo viernes. Registro gratuito.</p>
+<div class="alert-meta">
+<span class="alert-time">📅 Vie, 5 Jun — 6:00 PM</span>
+<span class="alert-tag tag-blue">Evento</span>
+</div>
+</div>
+</div>
+
+<!-- Card 4 -->
+<div class="alert-card ac-success reveal" style="transition-delay:.05s">
+<span class="alert-icon">🟢</span>
+<div class="alert-body">
+<h4 class="alert-title">Fuga en Av. Balboa reparada</h4>
+<p class="alert-desc">El servicio fue restaurado con éxito. Gracias a los 14 reportes de la comunidad.</p>
+<div class="alert-meta">
+<span class="alert-time"> Ayer – 11:30 PM</span>
+<span class="alert-tag tag-green">Resuelto</span>
+</div>
+</div>
+</div>
+
+<!-- Card 5 -->
+<div class="alert-card ac-warning reveal" style="transition-delay:.15s">
+<span class="alert-icon">💧</span>
+<div class="alert-body">
+<h4 class="alert-title">Campaña de ahorro en Chiriquí</h4>
+<p class="alert-desc">Se solicita reducir consumo en horario pico (7–9 AM) durante la próxima semana.</p>
+<div class="alert-meta">
+<span class="alert-time">📅 28 May – 3 Jun</span>
+<span class="alert-tag tag-yellow">Aviso</span>
+</div>
+</div>
+</div>
+
+<!-- Card 6 -->
+<div class="alert-card ac-info reveal" style="transition-delay:.25s">
+<span class="alert-icon">🗺️</span>
+<div class="alert-body">
+<h4 class="alert-title">Nuevo punto de distribución en Colón</h4>
+<p class="alert-desc">Disponible desde hoy en el Parque Bolívar. Horario: 8 AM – 4 PM de lunes a viernes.</p>
+<div class="alert-meta">
+<span class="alert-time"> Hoy – 8:00 AM</span>
+<span class="alert-tag tag-blue">Nuevo</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- =========================================================
+
+FOOTER
+
+========================================================= -->
+<footer class="footer" id="nosotros">
+<div class="container">
+<div class="footer-grid">
+
+<!-- Brand -->
+<div class="footer-brand">
+<a href="#" class="nav-logo">
+<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:32px">
+<path d="M18 3C18 3 6 14.5 6 22C6 28.627 11.373 34 18 34C24.627 34 30 28.627 30 22C30 14.5 18 3Z" fill="url(#dropGrad2)" />
+<circle cx="20" cy="17" r="2.5" fill="white" opacity=".7" />
+<defs>
+<linearGradient id="dropGrad2" x1="6" y1="3" x2="30" y2="34" gradientUnits="userSpaceOnUse">
+<stop stop-color="#38B6E8"/><stop offset="1" stop-color="#0B7DBD"/>
+</linearGradient>
+</defs>
+</svg>
+<span class="nav-logo-text" style="color:white">Clear<span>Drop</span></span>
+</a>
+<p>Conectando comunidades con soluciones de agua limpia para un Panamá sostenible.</p>
+
+<div class="social-row">
+<a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+<a href="#" class="social-btn" aria-label="Instagram">📷</a>
+<a href="#" class="social-btn" aria-label="Facebook">f</a>
+<a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+</div>
+</div>
+
+<!-- Plataforma -->
+<div>
+<p class="footer-heading">Plataforma</p>
+<ul class="footer-links">
+<li><a href="#">Inicio</a></li>
+<li><a href="#mapa">Mapa interactivo</a></li>
+<li><a href="#reportes">Reportar fuga</a></li>
+<li><a href="#educacion">Educación</a></li>
+</ul>
+</div>
+
+<!-- Comunidad -->
+<div>
+<p class="footer-heading">Comunidad</p>
+<ul class="footer-links">
+<li><a href="#">Voluntariado</a></li>
+<li><a href="#">Foros</a></li>
+<li><a href="#">Eventos</a></li>
+<li><a href="#">Blog ambiental</a></li>
+</ul>
+</div>
+
+<!-- Legal -->
+<div>
+<p class="footer-heading">Legal</p>
+<ul class="footer-links">
+<li><a href="#">Términos de uso</a></li>
+<li><a href="#">Privacidad</a></li>
+<li><a href="#">Sobre nosotros</a></li>
+<li><a href="#">Contacto</a></li>
+</ul>
+</div>
+</div>
+
+<div class="footer-bottom">
+<span>© 2026 ClearDrop. Todos los derechos reservados.</span>
+<span>Hecho con 💧 para Panamá</span>
+</div>
+</div>
+</footer>
+
+<!-- =========================================================
+
+FLOATING ACTION BUTTON
+
+========================================================= -->
+<a href="#reportes" class="fab" aria-label="Reportar ahora">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+<path d="M18 3a3 3 0 0 0-3 3l-3 1-1 4 4-1 3-3V3z"/>
+<path d="M18 6 7 17"/>
+<path d="M4 20l4-1 9-9-3-3-9 9-1 4z"/>
+</svg>
+Reportar ahora
+</a>
+</body>
+</html>
